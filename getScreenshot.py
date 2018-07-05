@@ -1,8 +1,8 @@
 ﻿#make a timeStamp image
 from PIL import Image, ImageDraw, ImageFont
-import os
-import time
-import shutil
+import os, time, shutil
+from selenium import webdriver
+
 im = Image.new('RGBA', (650, 150), 'white')
 draw = ImageDraw.Draw(im)
 screenshotTime = time.strftime('%y_%m_%d_%H_%M_%S')
@@ -13,8 +13,6 @@ im.save('C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\' + 'timeStamp.png')
 
 #make a screenshot
 #should install selenium prior 
-from selenium import webdriver
-import time
 # place geckodriver.exe in a folder
 browser = webdriver.Firefox(executable_path = 'C:\\Users\\peter\\AppData\\Local\\Programs\\Python\\Python36-32\\geckodriver')
 browser.minimize_window()
@@ -24,9 +22,7 @@ browser.get('http://www.caa.gov.tw/BIG5/ad/index.asp?page=1')
 browser.save_screenshot('C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\' + screenshotTime + '.png')
 browser.close()
 
-
 #paste timeStamp on screenshot
-import os
 os.chdir('C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\')
 for fileName in [os.listdir('C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\')]:
     fileName.sort(reverse = True)
@@ -34,12 +30,24 @@ screenshotWithoutTimeStamp = Image.open((fileName[1]))
 TimeStamp = Image.open('timeStamp.png')
 screenshotWithoutTimeStamp.paste(TimeStamp, (1572-650, 200))
 screenshotWithoutTimeStamp.save(fileName[1])
-#os.remove("C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\timeStamp.png")#檔案路徑和名稱
+os.remove("C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\timeStamp.png")#檔案路徑和名稱
 
+#log in localHd
 
+logFile = open('!screenshotLog.txt', 'a')
+logFile.write(screenshotTime + ' in localHd' + '\n')
+logFile.close()
 
-# copy to web hd Y:\
+# copy screenshot to web hd Y:\
 shutil.copy('C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\' + fileName[1], 'Y:\\AD screenshot\\')
 
+#log in webHd
+
+logFile = open('!screenshotLog.txt', 'a')
+logFile.write(screenshotTime + ' in webHd' + '\n' + '-------------------------------' + '\n')
+logFile.close()
+
+# copy log to web hd Y:\
+shutil.copy('C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\' + fileName[-1], 'Y:\\AD screenshot\\')
 
 
