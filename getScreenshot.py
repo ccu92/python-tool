@@ -24,30 +24,30 @@ browser.close()
 
 #paste timeStamp on screenshot
 os.chdir('C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\')
+'''
 for fileName in [os.listdir('C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\')]:
     fileName.sort(reverse = True)
-screenshotWithoutTimeStamp = Image.open((fileName[1]))
+'''
+screenshotWithoutTimeStamp = Image.open(screenshotTime + '.png')
 TimeStamp = Image.open('timeStamp.png')
 screenshotWithoutTimeStamp.paste(TimeStamp, (1572-650, 200))
-screenshotWithoutTimeStamp.save(fileName[1])
+screenshotWithoutTimeStamp.save(screenshotTime + '.png')
 os.remove("C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\timeStamp.png")#檔案路徑和名稱
-
+'''
 #log in localHd
-
 logFile = open('!screenshotLog.txt', 'a')
 logFile.write(screenshotTime + ' in localHd' + '\n')
 logFile.close()
-
+'''
 # copy screenshot to web hd Y:\
-shutil.copy('C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\' + fileName[1], 'Y:\\AD screenshot\\')
-
+shutil.copy('C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\' + screenshotTime + '.png', 'Y:\\AD screenshot\\')
+'''
 #log in webHd
-
 logFile = open('!screenshotLog.txt', 'a')
 logFile.write(screenshotTime + ' in webHd' + '\n' + '-------------------------------' + '\n')
 logFile.close()
-
 # copy log to web hd Y:\
+for fileName in [os.listdir('C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\')]:
+    fileName.sort(reverse = True)
 shutil.copy('C:\\Users\\peter\\OneDrive\\工作夾\\screenshot\\' + fileName[-1], 'Y:\\AD screenshot\\')
-
-
+'''
