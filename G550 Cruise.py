@@ -175,12 +175,13 @@ for fileName in os.listdir('C:\\Users\\peter\\OneDrive\\工作夾\\RCP\\'+ tailN
     sheet.cell(row = m, column = 1).value = fileName
     m = m + 1
 #Mmm = time.strftime('%b')
+Mmm = folderName[4:]
 YYYY = time.strftime('%Y')
 #切到第1個工作分頁
 sheet = wb['Cruise Monitor data']
-sheet.cell(row = 1, column = 1).value = tailNum + ' Cruise Performance Data Analyze-' + 'Mmm' + ' ' + YYYY
+sheet.cell(row = 1, column = 1).value = tailNum + ' Cruise Performance Data Analyze-' + Mmm + ' ' + YYYY
 
 
 #Engine_Trend_Cruise-Jul 2018 B-99888
-wb.save('Engine_Trend_Cruise-' + 'Mmm' + ' ' + YYYY + ' ' + tailNum + '.xlsx')
+wb.save('Engine_Trend_Cruise-' + Mmm + ' ' + YYYY + ' ' + tailNum + '.xlsx')
 
