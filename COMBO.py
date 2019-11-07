@@ -1,11 +1,11 @@
 import csv, openpyxl, os, time
 
 
-print('請輸入機尾號 ex: B-##### (*** 適用機型：G550 或 G650 ***)')
+print('Re Num ex: L-##### (*** specific for xxx / xxx ***)')
 tailNum = input()
-if tailNum == "B-56789" or tailNum == "B-99988":
-    print("*** G650 ***\n")
-    print('請輸入資料夾名稱 ex: yyyymm')
+if tailNum == "L-#####" or tailNum == "L-#####":
+    print("*** xxxx ***\n")
+    print('entry folder name ex: yyyymm')
     folderName = input()
 
 
@@ -347,9 +347,9 @@ if tailNum == "B-56789" or tailNum == "B-99988":
 #-------------------------------------------------------------------
 
 
-elif tailNum == "B-99888" or tailNum == "B-90609":
-    print("*** G550 ***\n")
-    print('請輸入資料夾名稱 ex: yyyymm')
+elif tailNum == "L-#####" or tailNum == "L-#####":
+    print("*** xxxx ***\n")
+    print('entry folder name ex: yyyymm')
     folderName = input()
 
 
@@ -686,8 +686,8 @@ elif tailNum == "B-99888" or tailNum == "B-90609":
 
 
 #-------------------------------------------------------------------    
-elif tailNum == "B99888" or tailNum == "B90609" or tailNum == "B56789" or tailNum == "B99988":
-    print("The tail number should be B-#####.\nNot B#####.")
+elif tailNum == "L#####" or tailNum == "L#####" or tailNum == "L#####" or tailNum == "L#####":
+    print("The tail number should be L-#####.\nNot L#####.")
     print("PRESS ENTER TO ESCAPE.")
     input()
 
