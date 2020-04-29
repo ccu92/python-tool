@@ -44,6 +44,7 @@ a = ""
 answer = "No match"
 tmp = []
 find_count = 0
+find_count2 = 0
 yes_count = 0
 
 # 18 20 still have bug
@@ -58,12 +59,16 @@ if file_csv_loc_name == "databases/large.csv":
 
         for k in range(0, column_c - 1):
             find_this = target[k] * int(tmp[k + 1])
+            find_this2 = target[k] * (int(tmp[k + 1]) + 1)
             '''print(target[k])
             print(" x ")
             print(tmp[k + 1])'''
             find_count = dna_txt_srt.count(find_this)
-            '''print(find_this)'''
-            if find_count == 1:
+            find_count2 = dna_txt_srt.count(find_this2)
+
+            '''print(find_this)
+            print(find_this2)'''
+            if find_count == 1 and find_count2 == 0:
                 # if tmp[k + 1] == tester[k + 1]:
                 #     yes_count += 1
                 # else:
@@ -133,3 +138,4 @@ for i in range(1, line_c):
 print("final: " + answer)
 '''
 print(answer)
+
